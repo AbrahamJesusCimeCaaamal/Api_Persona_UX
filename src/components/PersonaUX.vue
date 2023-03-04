@@ -71,33 +71,25 @@ export default {
                         <h1 class="text-left px-4   py-6 text-black text-2xl font-bold ">Parte 1.- Información  Personal</h1>
                     <div class="md:flex mb-2 px-4 py-3">
                         <div class="flex ">
-                            <div class="">
-                    <label class="block py-2 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
-                        Nombre:
-                    </label>
-                    </div>
-                    <div class="">
-                    <input name="Nombre" id="Nombre" v-model="Nombre" class="w-96  bg-gray-100 appearance-none border-2 border-gray-200 rounded  py-2 px-4 text-gray-700 leading-tight focus:outline-none  focus:ring-blue-500 focus:border-blue-500" type="text" >
-                    </div>
+                            
+                    <label class="  block py-2 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name"> Nombre: </label>
+                    <input name="Nombre" id="Nombre" v-model="Nombre" class="w-96 h-10 bg-gray-100 appearance-none border-2 border-gray-200 rounded  py-2 px-4 text-gray-700 leading-tight focus:outline-none  focus:ring-blue-500 focus:border-blue-500" type="text" >
+                    
                 </div>
                 <div class="md:flex md:items-center mb-6">
-                    <div class="">
-                    <label class=" px-6 block font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
-                        Edad:
-                    </label>
-                    </div>
-                    <div class="">
+                    
+                    <label class=" px-6 block font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">Edad:</label>
                     <input name="Edad" id="Edad" v-model="Edad" class="bg-gray-100 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none  focus:ring-blue-500 focus:border-blue-500"  type="text" >
-                    </div>
+                    
                 </div>
 
-                <div class="md:flex md:items-center mb-2">
-                    <div class="">
-                    <label class=" px-4 block text-black font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
+                <div class="flex md:items-center mb-5">
+
+                <label class=" px-4 block text-black font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
                         Estado civil:
-                    </label>
-                    </div>
-                    <div class="">
+                </label>
+
+                <div class="">
                  <select name="EstadoCivil" id="EstadoCivil" class=" px-6 py-2 bg-gray-50  border-gray-100 text-gray-900 text-lg rounded-lg border-2 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" v-model="EstadoCivil"  >
                 <option value="1" selected>Soltero</option>
                  <option value="2" >Casado</option>
@@ -114,30 +106,18 @@ export default {
                     
                 <div class=" flex">
                     <div class="md:flex md:items-center mb-6">
-                    <div class=" ">
-                    <label class=" px-4 block text-black  font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
-                        Trabajo:
-                    </label>
-                    </div>
-                    <div class="">
+                    <label class=" px-4 block text-black  font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name"> Trabajo: </label>
                     <input name="Trabajo" id="Trabajo" v-model="Trabajo" class=" w-96  bg-gray-100 appearance-none border-2 border-gray-200 rounded py-2 px-4 text-gray-700 leading-tight focus:outline-none  focus:ring-blue-500 focus:border-blue-500" type="text" >
-                    </div>
                 </div>
-                <div class="md:flex md:items-center mb-6">
-                    <div class="">
-                    <label class=" px-4 block text-black font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
-                        Residencia
-                    </label>
-                    </div>
-                    <div class="">
-                    <input name="Recidencia" id="Recidencia" v-model="Residencia" class=" w-96 bg-gray-100 appearance-none border-2 border-gray-200 rounded  py-2 px-4 text-gray-700 leading-tight focus:outline-none  focus:ring-blue-500 focus:border-blue-500"  type="text" >
-                    </div>
-                </div>
-                </div>
-                
-                
 
-                    </div><br>
+                <div class="md:flex md:items-center mb-6">
+                    <label class=" px-4 block text-black font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">Residencia </label>
+                    <input name="Recidencia" id="Recidencia" v-model="Residencia" class=" w-96 bg-gray-100 appearance-none border-2 border-gray-200 rounded  py-2 px-4 text-gray-700 leading-tight focus:outline-none  focus:ring-blue-500 focus:border-blue-500"  type="text" >
+                </div>
+
+                </div>
+
+            </div><br>
 
             <!-- Acerca de mi  -->
 
@@ -151,8 +131,8 @@ export default {
                     </label>
                     </div>
                     <div class="">
-                    <input v-model="Cita" class="max-w-md   bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="text" >
-                    </div>
+                     <textarea v-model="Cita"  name="citaAutor" id="citaAutor" class="text-secundario font-semibold font-contenido px-5 py-3 border-2 border-secundario w-full" rows="2"></textarea>
+                </div>
                 </div>
                 <div class="md:flex md:items-center mb-6">
                     <div class="">
@@ -161,7 +141,7 @@ export default {
                     </label>
                     </div>
                     <div class="">
-                     <textarea name="citaAutor" id="citaAutor" class="text-secundario font-semibold font-contenido px-5 py-3 border-2 border-secundario w-full" v-model="CitaAutor" rows="10"></textarea>    
+                     <textarea v-model="CitaAutor" name="citaAutor" id="citaAutor" class="text-secundario font-semibold font-contenido px-5 py-3 border-2 border-secundario w-full"  rows="2"></textarea>    
                 </div>
                 </div>
                 </div>
