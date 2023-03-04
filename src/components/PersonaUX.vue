@@ -15,10 +15,9 @@ export default {
             Personalidad2:"",
             Personalidad3: "",
             Personalidad4: "",
-            Objetivos: "",
-            Frustraciones: [],
-            Motivaciones: [],
-            Marcas: ""
+            Objetivos: [""] ,
+            Frustraciones:[],
+            Motivaciones: "",
         };
     },
     mounted() {
@@ -27,7 +26,8 @@ export default {
     },
     methods: {
         Enviar(){
-            axios.post("/api/guardarPersonasUxd.php", {
+            if(this.validarNombre() ){
+                axios.post("/api/guardarPersonasUxd.php", {
                 nombre: this.Nombre,
                 edad: this.Edad,
                 estadoCivil: this.EstadoCivil,
@@ -49,7 +49,19 @@ export default {
             .then((response) => {
             console.log(response.status)
             });
+            }
 
+        },
+
+        validarNombre(){
+            if (this.Nombre == "") {
+                console.log("vamos, ponle un nombre")
+                return false
+            }else{
+                console.log("vamos") 
+            }
+            return true
+            
 
         }
 
@@ -112,7 +124,7 @@ export default {
 
                 <div class="md:flex md:items-center mb-6">
                     <label class=" px-4 block text-black font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">Residencia </label>
-                    <input name="Recidencia" id="Recidencia" v-model="Residencia" class=" w-96 bg-gray-100 appearance-none border-2 border-gray-200 rounded  py-2 px-4 text-gray-700 leading-tight focus:outline-none  focus:ring-blue-500 focus:border-blue-500"  type="text" >
+                    <input name="Residencia" id="Residencia" v-model="Residencia" class=" w-96 bg-gray-100 appearance-none border-2 border-gray-200 rounded  py-2 px-4 text-gray-700 leading-tight focus:outline-none  focus:ring-blue-500 focus:border-blue-500"  type="text" >
                 </div>
 
                 </div>
@@ -248,8 +260,8 @@ export default {
                 <div class="md:flex md:items-center">
                     <div class="md:w-1/3"></div>
                     <div class="md:w-2/3">
-                        <div @click="Enviar()">
-                            <button class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
+                        <div>
+                            <button  @click="Enviar()" class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
                                 Enviar
                             </button>
                         </div>
