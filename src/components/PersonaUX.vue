@@ -67,7 +67,7 @@ export default {
             </div>
             <div class="w-auto px-20  md:px-6">
                 <form class=" mx-auto mb-4   " method="get">
-                    <div class=" bg-orange-200 ">
+                    <div class=" bg-orange-200 text-lg ">
                         <h1 class="text-left px-4   py-6 text-black text-2xl font-bold ">Parte 1.- Información  Personal</h1>
                     <div class="md:flex mb-2 px-4 py-3">
                         <div class="flex ">
@@ -121,41 +121,32 @@ export default {
 
             <!-- Acerca de mi  -->
 
-                <div class="bg-blue-200 py-2 px-5 ">
+                <div class="bg-blue-200 py-2 px-5 w-full text-lg ">
                     <h1 class="text-2xl font-bold text-black text-left  py-8">Parte 2.- Acerca de mi</h1>
-                <div class="flex">
-                    <div class="md:flex md:items-center mb-6">
-                    <div class="">
-                    <label class=" block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
-                        Cita
-                    </label>
+                <div class="flex w-full">
+                    <div class="md:flex md:items-center mb-6 w-6/12 ">
+                    <label class=" block text-black font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name"> Cita:</label>
+                     <textarea v-model="Cita"  name="cita" id="cita" class=" text-secundario font-semibold font-contenido px-5 py-3 border-2 border-secundario w-full" rows="1"></textarea>
+
                     </div>
-                    <div class="">
-                     <textarea v-model="Cita"  name="citaAutor" id="citaAutor" class="text-secundario font-semibold font-contenido px-5 py-3 border-2 border-secundario w-full" rows="2"></textarea>
-                </div>
-                </div>
-                <div class="md:flex md:items-center mb-6">
-                    <div class="">
-                    <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
-                        Cita autor
-                    </label>
-                    </div>
-                    <div class="">
+                    <div class="flex md:items-center mb-6  w-6/12">
+                    
+                    <label class="px-4 text-black font-bold w-36 "> Cita autor: </label>
+                    
+                    <div class="w-11/12 ">
                      <textarea v-model="CitaAutor" name="citaAutor" id="citaAutor" class="text-secundario font-semibold font-contenido px-5 py-3 border-2 border-secundario w-full"  rows="2"></textarea>    
-                </div>
+                    </div>
                 </div>
                 </div>
 
 
 
                 <div class="md:flex md:items-center mb-6">
-                    <div class="">
-                    <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
-                        Bio
-                    </label>
-                    </div>
-                    <div class="w-3/6">
-                        <textarea name="Bio" id="Bio" class="text-secundario font-semibold font-contenido px-5 py-3 border-2 border-secundario w-full" v-model="Bio" rows="10"></textarea>
+                    
+                    <label class="block text-black font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name"> Bio: </label>
+                    
+                    <div class="w-full">
+                        <textarea name="Bio" id="Bio" class="text-secundario font-semibold font-contenido px-5 py-3 border-2 border-secundario w-full" v-model="Bio" rows="4"></textarea>
                     </div>
                     
                 </div>
