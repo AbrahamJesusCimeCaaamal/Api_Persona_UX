@@ -141,11 +141,11 @@ export default {
                 <form class=" mx-auto mb-4   " method="get">
                     <div class=" bg-orange-200 text-lg ">
                         <h1 class=" px-4   py-6 text-black text-3xl font-bold ">Información  Personal</h1>
-                    <div class="md:flex mb-2 px-4 py-3">
-                        <div class="flex ">
+                    <div class="lg:flex mb-2 px-4 py-3">
+                        <div class="md:flex ">
                             
                     <label class="  block py-2 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name"> Nombre: </label>
-                    <input name="Nombre" id="Nombre" v-model="Nombre" class="w-96 h-10 bg-while  appearance-none border-2 border-gray-200 rounded  py-2 px-4 text-gray-700 leading-tight focus:outline-none  focus:ring-blue-500 focus:border-blue-500" type="text" >
+                    <input name="Nombre" id="Nombre" v-model="Nombre" class=" 2xl:w-96 sm:w-60 md:w-80  h-10 bg-while  appearance-none border-2 border-gray-200 rounded  py-2 px-4 text-gray-700 leading-tight focus:outline-none  focus:ring-blue-500 focus:border-blue-500" type="text" >
                     
                 </div>
                 <div class="md:flex md:items-center mb-6">
@@ -155,15 +155,15 @@ export default {
                     
                 </div>
 
-                <div class="flex md:items-center mb-5">
+                <div class=" md:flex md:items-center mb-5">
 
                 <label class=" px-4 block text-black font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
                         Estado civil:
                 </label>
 
                 <div class="">
-                <select v-model="selected" name="EstadoCivil" id="EstadoCivil"  class="w-full py-2.5 px-4 rounded-lg bg-while focus:shadow focus:bg-white focus:outline-none">
-                <option disabled selected value="">Selecciona </option>
+                <select v-model="EstadoCivil" name="EstadoCivil" id="EstadoCivil"  class="w-full py-2.5 px-4 rounded-lg bg-while focus:shadow focus:bg-white focus:outline-none">
+                <option disabled  value="">Selecciona </option>
                 <option value="1">Soltero</option>
                 <option value="2">Casado </option>
                 <option value="3">Divorciado</option>
@@ -177,15 +177,15 @@ export default {
 
                 </div>
                     
-                <div class=" flex">
+                <div class="lg:flex sm:py-2">
                     <div class="md:flex md:items-center mb-6">
                     <label class=" px-4 block text-black  font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name"> Trabajo: </label>
-                    <input name="Trabajo" id="Trabajo" v-model="Trabajo" class=" w-96  bg-while appearance-none border-2 border-gray-200 rounded py-2 px-4 text-gray-700 leading-tight focus:outline-none  focus:ring-blue-500 focus:border-blue-500" type="text" >
+                    <input name="Trabajo" id="Trabajo" v-model="Trabajo" class=" mb:w-80   2xl:w-96  bg-while appearance-none border-2 border-gray-200 rounded py-2 px-4 text-gray-700 leading-tight focus:outline-none  focus:ring-blue-500 focus:border-blue-500" type="text" >
                 </div>
 
                 <div class="md:flex md:items-center mb-6">
                     <label class=" px-4 block text-black font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">Residencia </label>
-                    <input name="Residencia" id="Residencia" v-model="Residencia" class=" w-96 bg-while appearance-none border-2 border-gray-200 rounded  py-2 px-4 text-gray-700 leading-tight focus:outline-none  focus:ring-blue-500 focus:border-blue-500"  type="text" >
+                    <input name="Residencia" id="Residencia" v-model="Residencia" class=" mb:w-80   2xl:w-96 bg-while appearance-none border-2 border-gray-200 rounded  py-2 px-4 text-gray-700 leading-tight focus:outline-none  focus:ring-blue-500 focus:border-blue-500"  type="text" >
                 </div>
 
                 </div>
@@ -196,15 +196,15 @@ export default {
 
                 <div class="bg-blue-200 py-2 px-5 w-full text-lg ">
                     <h1 class="text-3xl font-bold text-black  py-8">Acerca de mi</h1>
-                <div class="flex w-full">
-                    <div class="md:flex md:items-center mb-6 w-6/12 ">
+                <div class="lg:flex w-full">
+                    <div class="md:flex md:items-center mb-6 lg:w-6/12 sm:w-full ">
                     <label class=" block text-black font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name"> Cita:</label>
                      <textarea v-model="Cita"  name="cita" id="cita" class=" text-secundario font-semibold font-contenido px-5 py-3 border-2 border-secundario w-full" rows="1"></textarea>
 
                     </div>
-                    <div class="flex md:items-center mb-6  w-6/12">
+                    <div class="md:flex md:items-center mb-6  lg:w-6/12 sm:w-full ">
                     
-                    <label class="px-4 text-black font-bold w-36 "> Cita autor: </label>
+                    <label class="px-2  text-black font-bold w-32   sm:w-44 "> Cita autor: </label>
                     
                     <div class="w-11/12 ">
                      <textarea v-model="CitaAutor" name="citaAutor" id="citaAutor" class="text-secundario font-semibold font-contenido px-5 py-3 border-2 border-secundario w-full"  rows="2"></textarea>    
@@ -304,28 +304,28 @@ export default {
 
 </div><br>
 
-   <div class="bg-green-200 px-4 py-4" >
+   <div class="bg-green-200 sm:px-4 lg:px-32 py-4" >
     <h1 class="text-3xl font-bold">Complementos</h1>
   
     
-    <div class="flex mb-6 w-2/3 px-2 py-2">
+    <div class="flex mb-6 lg:w-4/5 sm:w-full px-2 py-2">
       <label class=" py-2 block text-black-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">  Objetivos: </label> 
       <input id="objetivos" name="objetivos" v-model="Objetivos" class="bg-white  appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-black leading-tight focus:outline-none focus:bg-white focus:border-black " type="text" >
     </div>
 
-    <div class="flex mb-6 w-2/3 px-2 py-2">
+    <div class="flex mb-6 lg:w-4/5  sm:w-full px-2 py-2">
       <label class="block text-black font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">Frustraciones:</label>
       <input id="frustaciones" name="frustraciones" v-model="Frustraciones" class="bg-whileappearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"  type="text" >
                    
     </div>
 
-    <div class="flex mb-6 w-2/3 px-2 py-2">
+    <div class="flex mb-6 lg:w-4/5  sm:w-full px-2 py-2">
       <label class="block text-black  font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">Motivaciones:</label>       
       <input id="motivaciones"  name="motivaciones" v-model="Motivaciones" class="bg-while appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"  type="text" >
               
     </div>
 
-    <div class="flex mb-6 w-3/5 px-2 py-2">
+    <div class="flex mb-6 lg:w-4/5  sm:w-full  px-2 py-2">
       <label class="block text-black font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">Marcas: </label>  
       <input v-model="Marcas" class="bg-while appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="text" >
                      
