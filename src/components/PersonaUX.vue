@@ -72,6 +72,14 @@ export default {
               return false
             }
 
+            //Trabajo
+            if (this.Trabajo.length < 201 && this.Trabajo != "" && !isNaN (this.Trabajo) === false){
+              console.log("trabajo existe")
+            }else{
+              console.log("no existe trabajo")
+              return false
+            }
+
 
           return true
                        
