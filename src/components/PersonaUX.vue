@@ -11,10 +11,10 @@ export default {
             Cita: "",
             CitaAutor: "",
             Bio: "",
-            Personalidad1: "",
-            Personalidad2:"",
-            Personalidad3: "",
-            Personalidad4: "",
+            Personalidad1: "50",
+            Personalidad2:"50",
+            Personalidad3: "50",
+            Personalidad4: "50",
             Objetivos: [""] ,
             Frustraciones:[],
             Motivaciones: "",
@@ -26,7 +26,7 @@ export default {
     },
     methods: {
         Enviar(){
-            if(this.validarNombre() ){
+            if(this.validar() ){
                 axios.post("/api/guardarPersonasUxd.php", {
                 nombre: this.Nombre,
                 edad: this.Edad,
@@ -53,17 +53,7 @@ export default {
 
         },
 
-        validarNombre(){
-            if (this.Nombre == "") {
-                console.log("vamos, ponle un nombre")
-                return false
-            }else{
-                console.log("vamos") 
-            }
-            return true
-            
 
-        }
 
     }
 }
@@ -73,25 +63,25 @@ export default {
 
 <template>
     <div class="flex ">
-        <div class="w-full rounded-lg p-6 shadow-lg bg-white ">
+        <div class="w-full rounded-lg p-6 shadow-lg bg-white m-4  ">
             <div class=" p-2 font-bold text-3xl" >
                 <h1> Formulario de Registro</h1>
             </div>
             <div class="w-auto px-20  md:px-6">
                 <form class=" mx-auto mb-4   " method="get">
                     <div class=" bg-orange-200 text-lg ">
-                        <h1 class="text-left px-4   py-6 text-black text-2xl font-bold ">Parte 1.- Información  Personal</h1>
+                        <h1 class=" px-4   py-6 text-black text-3xl font-bold ">Información  Personal</h1>
                     <div class="md:flex mb-2 px-4 py-3">
                         <div class="flex ">
                             
                     <label class="  block py-2 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name"> Nombre: </label>
-                    <input name="Nombre" id="Nombre" v-model="Nombre" class="w-96 h-10 bg-gray-100 appearance-none border-2 border-gray-200 rounded  py-2 px-4 text-gray-700 leading-tight focus:outline-none  focus:ring-blue-500 focus:border-blue-500" type="text" >
+                    <input name="Nombre" id="Nombre" v-model="Nombre" class="w-96 h-10 bg-while  appearance-none border-2 border-gray-200 rounded  py-2 px-4 text-gray-700 leading-tight focus:outline-none  focus:ring-blue-500 focus:border-blue-500" type="text" >
                     
                 </div>
                 <div class="md:flex md:items-center mb-6">
                     
                     <label class=" px-6 block font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">Edad:</label>
-                    <input name="Edad" id="Edad" v-model="Edad" class="bg-gray-100 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none  focus:ring-blue-500 focus:border-blue-500"  type="text" >
+                    <input name="Edad" id="Edad" v-model="Edad" class="bg-while appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none  focus:ring-blue-500 focus:border-blue-500"  type="text" >
                     
                 </div>
 
@@ -102,14 +92,15 @@ export default {
                 </label>
 
                 <div class="">
-                 <select name="EstadoCivil" id="EstadoCivil" class=" px-6 py-2 bg-gray-50  border-gray-100 text-gray-900 text-lg rounded-lg border-2 focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" v-model="EstadoCivil"  >
-                <option value="1" selected>Soltero</option>
-                 <option value="2" >Casado</option>
-                 <option value="3">Divorciado</option>
-                 <option value="4">Separado</option>
-                 <option value="5">Unión libre</option>
-                 <option value="6">Viudo</option>
-                </select>
+                <select v-model="selected" name="EstadoCivil" id="EstadoCivil"  class="w-full py-2.5 px-4 rounded-lg bg-while focus:shadow focus:bg-white focus:outline-none">
+                <option disabled selected value="">Selecciona </option>
+                <option value="1">Soltero</option>
+                <option value="2">Casado </option>
+                <option value="3">Divorciado</option>
+                <option value="4">Separado</option>
+                <option value="5">Unión libre</option>
+                <option value="6">Viudo</option>
+              </select>
                 </div>
                     
                 </div>
@@ -119,12 +110,12 @@ export default {
                 <div class=" flex">
                     <div class="md:flex md:items-center mb-6">
                     <label class=" px-4 block text-black  font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name"> Trabajo: </label>
-                    <input name="Trabajo" id="Trabajo" v-model="Trabajo" class=" w-96  bg-gray-100 appearance-none border-2 border-gray-200 rounded py-2 px-4 text-gray-700 leading-tight focus:outline-none  focus:ring-blue-500 focus:border-blue-500" type="text" >
+                    <input name="Trabajo" id="Trabajo" v-model="Trabajo" class=" w-96  bg-while appearance-none border-2 border-gray-200 rounded py-2 px-4 text-gray-700 leading-tight focus:outline-none  focus:ring-blue-500 focus:border-blue-500" type="text" >
                 </div>
 
                 <div class="md:flex md:items-center mb-6">
                     <label class=" px-4 block text-black font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">Residencia </label>
-                    <input name="Residencia" id="Residencia" v-model="Residencia" class=" w-96 bg-gray-100 appearance-none border-2 border-gray-200 rounded  py-2 px-4 text-gray-700 leading-tight focus:outline-none  focus:ring-blue-500 focus:border-blue-500"  type="text" >
+                    <input name="Residencia" id="Residencia" v-model="Residencia" class=" w-96 bg-while appearance-none border-2 border-gray-200 rounded  py-2 px-4 text-gray-700 leading-tight focus:outline-none  focus:ring-blue-500 focus:border-blue-500"  type="text" >
                 </div>
 
                 </div>
@@ -134,7 +125,7 @@ export default {
             <!-- Acerca de mi  -->
 
                 <div class="bg-blue-200 py-2 px-5 w-full text-lg ">
-                    <h1 class="text-2xl font-bold text-black text-left  py-8">Parte 2.- Acerca de mi</h1>
+                    <h1 class="text-3xl font-bold text-black  py-8">Acerca de mi</h1>
                 <div class="flex w-full">
                     <div class="md:flex md:items-center mb-6 w-6/12 ">
                     <label class=" block text-black font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name"> Cita:</label>
@@ -165,109 +156,122 @@ export default {
                 
 
 
-                </div>
+                </div><br>
                
+<div class="  bg-rose-200 px-4 py-8">
+ <h1 class=" text-3xl font-bold">Personalidad</h1>
+  <div class="w-full mt-4">
+          <div class="px-8 text-lg bg-red-100  border-2 border-indigo-500/100  ">
+            <label class="block text-black font-bold md:text-left my-2 md:mb-0">
+            Personalidad 1.- Mente
+          </label><br>
+          <div class="flex">
+          <h1 class="px-2">Extrovertido  {{ this.Personalidad1 }}% </h1>
+          <input type="range" v-model="Personalidad1" class="w-full py-2.5 px-5 rounded-lg bg-gray-100  focus:bg-white " id="Personalidad1" placeholder="" typeof="slider" min="0" max="100"/>
+          <h1> Introvertido {{100- this.Personalidad1 }}% </h1>
+          
+        </div>
+
+          </div>
+
+  </div>
+        
 
 
-                
-                <div class="md:flex md:items-center mb-6">
-                    <div class="">
-                    <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
-                        Personalidad 1
-                    </label>
-                    </div>
-                    <div class="">
-                    <input v-model="Personalidad1" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="text" >
-                    </div>
-                </div>
-                <div class="md:flex md:items-center mb-6">
-                    <div class="">
-                    <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
-                        Personalidad 2
-                    </label>
-                    </div>
-                    <div class="">
-                    <input v-model="Personalidad2" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="text">
-                    </div>
-                </div>
+  <div class="w-full mt-4">
+          <div class="px-8 text-lg bg-red-100  border-2 border-indigo-500/100  ">
+            <label class="block text-black font-bold md:text-left my-2 md:mb-0">
+            Personalidad 2.- Energía
+          </label><br>
 
-                <div class="md:flex md:items-center mb-6">
-                    <div class="">
-                    <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
-                        Personalidad 3
-                    </label>
-                    </div>
-                    <div class="">
-                    <input v-model="Personalidad3" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="text" >
-                    </div>
-                </div>
-                <div class="md:flex md:items-center mb-6">
-                    <div class="">
-                    <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
-                        Personalidad 4
-                    </label>
-                    </div>
-                    <div class="">
-                    <input v-model="Personalidad4" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="text" >
-                    </div>
-                </div>
-                <div class="md:flex md:items-center mb-6">
-                    <div class="">
-                    <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
-                        Objetivos
-                    </label>
-                    </div>
-                    <div class="">
-                    <input v-model="Objetivos" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="text" >
-                    </div>
-                </div>
-                <div class="md:flex md:items-center mb-6">
-                    <div class="">
-                    <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
-                        Frustraciones
-                    </label>
-                    </div>
-                    <div class="">
-                    <input v-model="Frustraciones" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="text" >
-                    </div>
-                </div>
-                <div class="md:flex md:items-center mb-6">
-                    <div class="">
-                    <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
-                        Motivaciones
-                    </label>
-                    </div>
-                    <div class="">
-                    <input v-model="Motivaciones" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="text" >
-                    </div>
-                </div>
-                <div class="md:flex md:items-center mb-6">
-                    <div class="">
-                    <label class="block text-gray-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">
-                        Marcas
-                    </label>
-                    </div>
-                    <div class="">
-                    <input v-model="Marcas" class="bg-gray-200 appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="text" >
-                    </div>
-                </div>
+          <div class="flex">
+          <h1 class="px-2">Intuitivo  {{ this.Personalidad2 }}% </h1>
+          <input type="range" v-model="Personalidad2" class="w-full py-2.5 px-5 rounded-lg bg-gray-100  focus:bg-white " id="Personalidad2" placeholder="" typeof="slider" min="0" max="100"/>
+          <h1> Observador {{100- this.Personalidad2 }}% </h1>
+          
+        </div>
+
+          </div>
+
+  </div>
+
+  <div class="w-full mt-4">
+          <div class="px-8 text-lg bg-red-100  border-2 border-indigo-500/100  ">
+            <label class="block text-black font-bold md:text-left my-2 md:mb-0">
+            Personalidad 3.-Naturaleza
+          </label><br>
+
+          <div class="flex">
+          <h1 class="px-2">Pensamiento  {{ this.Personalidad3 }}% </h1>
+          <input type="range" v-model="Personalidad3" class="w-full py-2.5 px-5 rounded-lg bg-gray-100  focus:bg-white " id="Personalidad3" placeholder="" typeof="slider" min="0" max="100"/>
+          <h1> Emocional {{100- this.Personalidad3 }}% </h1>
+          
+        </div>
+
+
+          </div>
+
+  </div>
+
+  <div class="w-full mt-4">
+          <div class="px-8 text-lg bg-red-100  border-2 border-indigo-500/100  ">
+            <label class="block text-black font-bold md:text-left my-2 md:mb-0">
+            Personalidad 4.- Identidad
+          </label><br>
+
+          <div class="flex">
+          <h1 class="px-2">Asertivo {{ this.Personalidad4 }}% </h1>
+          <input type="range" v-model="Personalidad4" class="w-full py-2.5 px-5 rounded-lg bg-gray-100  focus:bg-white " id="Personalidad4" placeholder="" typeof="slider" min="0" max="100"/>
+          <h1> Cauteloso {{100- this.Personalidad4 }}% </h1>
+          
+        </div>
+
+          </div>
+
+  </div>
+      
 
 
 
 
+</div><br>
 
-                
-                <div class="md:flex md:items-center">
-                    <div class="md:w-1/3"></div>
-                    <div class="md:w-2/3">
-                        <div>
-                            <button  @click="Enviar()" class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
-                                Enviar
-                            </button>
-                        </div>
+   <div class="bg-green-200 px-4 py-4" >
+    <h1 class="text-3xl font-bold">Complementos</h1>
+  
+    
+    <div class="flex mb-6 w-2/3 px-2 py-2">
+      <label class=" py-2 block text-black-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">  Objetivos: </label> 
+      <input id="objetivos" name="objetivos" v-model="Objetivos" class="bg-white  appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-black leading-tight focus:outline-none focus:bg-white focus:border-black " type="text" >
+    </div>
+
+    <div class="flex mb-6 w-2/3 px-2 py-2">
+      <label class="block text-black font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">Frustraciones:</label>
+      <input id="frustaciones" name="frustraciones" v-model="Frustraciones" class="bg-whileappearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"  type="text" >
+                   
+    </div>
+
+    <div class="flex mb-6 w-2/3 px-2 py-2">
+      <label class="block text-black  font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">Motivaciones:</label>       
+      <input id="motivaciones"  name="motivaciones" v-model="Motivaciones" class="bg-while appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"  type="text" >
+              
+    </div>
+
+    <div class="flex mb-6 w-3/5 px-2 py-2">
+      <label class="block text-black font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">Marcas: </label>  
+      <input v-model="Marcas" class="bg-while appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="text" >
+                     
+    </div>
+
+   </div>             
+
+    <div class=" py-2">
                     
-                    </div>
-                </div>
+          <button  @click="Enviar()" class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
+            Enviar
+          </button>
+                    
+    </div>
             </form>
 
             </div>
