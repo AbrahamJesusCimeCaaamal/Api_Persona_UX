@@ -80,6 +80,14 @@ export default {
               return false
             }
 
+            //Residencia
+            if (this.Residencia.length < 201 && this.Residencia != "" && !isNaN (this.Residencia) === false){
+              console.log("residencia existe")
+            }else{
+              console.log("no existe residencia")
+              return false
+            }
+
 
           return true
                        
