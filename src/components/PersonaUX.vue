@@ -96,6 +96,14 @@ export default {
               return false
             }
 
+            //CitaAutor
+            if (this.CitaAutor.length < 501 && this.CitaAutor != "" && !isNaN (this.CitaAutor) === false){
+              console.log("CitaAutor existe")
+            }else{
+              console.log("CitaAutor no existe")
+              return false
+            }
+
 
           return true
                        
