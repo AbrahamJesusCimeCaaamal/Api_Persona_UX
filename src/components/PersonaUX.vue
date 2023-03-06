@@ -104,6 +104,13 @@ export default {
               return false
             }
 
+            //Bio
+            if (this.Bio.length < 701 && this.Bio != "" && !isNaN (this.CitaAutor) === false){
+              console.log("Bio correcta")
+            }else{
+              console.log("Bio incorrecta")
+              return false
+            }
 
           return true
                        
