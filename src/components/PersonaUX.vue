@@ -52,6 +52,20 @@ export default {
             }
 
         },
+        validar(){
+//nombre
+          if(this.Nombre != "" && !isNaN (this.Nombre) === false && this.Nombre.length <201 && this.Nombre.length > 2 ) {
+            console.log("el nombre es correcto")
+            return true
+          }
+          
+          else{
+            console.log("No pude registrarlo")
+            return false
+          }
+          
+
+            }
 
 
 
