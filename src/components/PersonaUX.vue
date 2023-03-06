@@ -88,6 +88,14 @@ export default {
               return false
             }
 
+            //Cita
+            if (this.Cita.length < 501 && this.Cita != "" && !isNaN (this.Cita) === false){
+              console.log("Cita existe")
+            }else{
+              console.log("Cita no existe")
+              return false
+            }
+
 
           return true
                        
