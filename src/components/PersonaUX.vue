@@ -56,9 +56,26 @@ export default {
 //nombre
           if(this.Nombre != "" && !isNaN (this.Nombre) === false && this.Nombre.length <201 && this.Nombre.length > 2 ) {
             console.log("el nombre es correcto")
-            return true
+             
+            //edad
+            if (this.Edad.length < 3 && this.Edad != ""){
+              console.log("edad existe")
+            }else{
+              console.log("no existe esa edad")
+            }
+
+            //Estado civil
+            if (this.EstadoCivil != ""){
+              console.log("si selecciono estado civil")
+            }else{
+              console.log("no selecciono estado civil")
+              return false
+            }
+
+
+          return true
+                       
           }
-          
           else{
             console.log("No pude registrarlo")
             return false
