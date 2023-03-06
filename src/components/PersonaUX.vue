@@ -223,10 +223,8 @@ export default {
                     </div>
                     
                 </div>
-                
-
-
-                </div><br>
+                </div>
+                <br>
                
 <div class="  bg-rose-200 px-4 py-8">
  <h1 class=" text-3xl font-bold">Personalidad</h1>
