@@ -17,8 +17,8 @@ export default {
 </script>
 
 <template>
-    <div>
-        <input type="text" v-model="dato" name="info" id="info" class="px-2 py-1 rounded-lg mb-3 ml-2 mr-2" @input="enviar">
+    <div class=" w-1/2">
+        <input type="text" v-model="dato" name="info" id="info" class=" 2xl:w-80 sm:w-60  md:w-80  h-10 bg-while  appearance-none border-2 border-gray-200 rounded  py-2 px-4 text-gray-700 leading-tight focus:outline-none  focus:ring-blue-500 focus:border-blue-500"  @input="enviar">
 
     </div>
 </template>
