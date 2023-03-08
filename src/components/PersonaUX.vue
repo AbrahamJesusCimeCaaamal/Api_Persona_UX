@@ -1,6 +1,15 @@
 <script>
+import Boton_Enviar from '../components/Boton_Enviar.vue';
+import slider from '../components/InputSliders.vue';
+import inputtext from '../components/InputTexto.vue';
 import axios from 'axios';
 export default {
+  components:{
+
+    Boton_Enviar,slider,inputtext
+  },
+  emits: ['person','info'] , 
+
     data() {
         return {
             Nombre: "",
@@ -15,9 +24,17 @@ export default {
             Personalidad2:"50",
             Personalidad3: "50",
             Personalidad4: "50",
-            Objetivos: [""] ,
-            Frustraciones:[],
-            Motivaciones: "",
+
+            Objetivos:[ {value: ''} ],
+
+
+            Frustraciones:[{value: 'obj20'}],
+
+            Motivaciones:[{value: 'motivacion','porcentaje':'80'}],
+
+            Marcas: "",
+            
+            
         };
     },
     mounted() {
@@ -25,6 +42,45 @@ export default {
 
     },
     methods: {
+      info1(a){
+                this.Nombre=a;
+
+            },
+      info2(a){
+                this.Edad=a;
+
+            },
+      info3(a){
+                this.Trabajo =a;
+
+            },
+
+      info4(a){
+                this.Residencia =a;
+
+            },
+      
+      
+      pers1(s){
+                this.Personalidad1=s;
+
+            }
+      ,
+      pers2(s){
+                this.Personalidad2=s;
+
+            }
+      ,
+      pers3(s){
+                this.Personalidad3=s;
+
+            }
+      ,
+      pers4(s){
+                this.Personalidad4=s;
+
+            }
+      ,
         Enviar(){
             if(this.validar() ){
                 axios.post("/api/guardarPersonasUxd.php", {
@@ -40,7 +96,7 @@ export default {
                 personalidad02: this.Personalidad2,
                 personalidad03: this.Personalidad3,
                 personalidad04: this.Personalidad4,
-                objetivos: this.Objetivos,
+                objetivos: this.Objetivos ,
                 frustraciones: this.Frustraciones,
                 motivaciones: this.Motivaciones,
                 marcas: this.Marcas
@@ -145,14 +201,17 @@ export default {
                         <div class="md:flex ">
                             
                     <label class="  block py-2 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name"> Nombre: </label>
-                    <input name="Nombre" id="Nombre" v-model="Nombre" class=" 2xl:w-96 sm:w-60 md:w-80  h-10 bg-while  appearance-none border-2 border-gray-200 rounded  py-2 px-4 text-gray-700 leading-tight focus:outline-none  focus:ring-blue-500 focus:border-blue-500" type="text" >
+
+
+                    <inputtext @info= " info1 " > Nombre</inputtext>
+
+
                     
                 </div>
                 <div class="md:flex md:items-center mb-6">
                     
                     <label class=" px-6 block font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">Edad:</label>
-                    <input name="Edad" id="Edad" v-model="Edad" class="bg-while appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none  focus:ring-blue-500 focus:border-blue-500"  type="text" >
-                    
+                    <inputtext @info= " info2 " > Edad</inputtext>
                 </div>
 
                 <div class=" md:flex md:items-center mb-5">
@@ -180,13 +239,13 @@ export default {
                 <div class="lg:flex sm:py-2">
                     <div class="md:flex md:items-center mb-6">
                     <label class=" px-4 block text-black  font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name"> Trabajo: </label>
-                    <input name="Trabajo" id="Trabajo" v-model="Trabajo" class=" mb:w-80   2xl:w-96  bg-while appearance-none border-2 border-gray-200 rounded py-2 px-4 text-gray-700 leading-tight focus:outline-none  focus:ring-blue-500 focus:border-blue-500" type="text" >
-                </div>
+                    <inputtext @info= " info3 " > Trabajo</inputtext>
+                  </div>
 
                 <div class="md:flex md:items-center mb-6">
                     <label class=" px-4 block text-black font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">Residencia </label>
-                    <input name="Residencia" id="Residencia" v-model="Residencia" class=" mb:w-80   2xl:w-96 bg-while appearance-none border-2 border-gray-200 rounded  py-2 px-4 text-gray-700 leading-tight focus:outline-none  focus:ring-blue-500 focus:border-blue-500"  type="text" >
-                </div>
+                    <inputtext @info= " info4 " > Recidencia</inputtext>
+                  </div>
 
                 </div>
 
@@ -226,6 +285,8 @@ export default {
                 </div>
                 <br>
                
+
+<!--- Personalidades, division de cada personalidad por invididual -->
 <div class="  bg-rose-200 px-4 py-8">
  <h1 class=" text-3xl font-bold">Personalidad</h1>
   <div class="w-full mt-4">
@@ -235,7 +296,9 @@ export default {
           </label><br>
           <div class="flex">
           <h1 class="px-2">Extrovertido  {{ this.Personalidad1 }}% </h1>
-          <input type="range" v-model="Personalidad1" class="w-full py-2.5 px-5 rounded-lg bg-gray-100  focus:bg-white " id="Personalidad1" placeholder="" typeof="slider" min="0" max="100"/>
+          
+          <slider @person="pers1">Personalidad 01</slider>
+          
           <h1> Introvertido {{100- this.Personalidad1 }}% </h1>
           
         </div>
@@ -254,8 +317,8 @@ export default {
 
           <div class="flex">
           <h1 class="px-2">Intuitivo  {{ this.Personalidad2 }}% </h1>
-          <input type="range" v-model="Personalidad2" class="w-full py-2.5 px-5 rounded-lg bg-gray-100  focus:bg-white " id="Personalidad2" placeholder="" typeof="slider" min="0" max="100"/>
-          <h1> Observador {{100- this.Personalidad2 }}% </h1>
+          <slider @person="pers2">Personalidad 02</slider>
+            <h1> Observador {{100- this.Personalidad2 }}% </h1>
           
         </div>
 
@@ -271,8 +334,8 @@ export default {
 
           <div class="flex">
           <h1 class="px-2">Pensamiento  {{ this.Personalidad3 }}% </h1>
-          <input type="range" v-model="Personalidad3" class="w-full py-2.5 px-5 rounded-lg bg-gray-100  focus:bg-white " id="Personalidad3" placeholder="" typeof="slider" min="0" max="100"/>
-          <h1> Emocional {{100- this.Personalidad3 }}% </h1>
+          <slider @person="pers3">Personalidad 03</slider> 
+         <h1> Emocional {{100- this.Personalidad3 }}% </h1>
           
         </div>
 
@@ -289,7 +352,7 @@ export default {
 
           <div class="flex">
           <h1 class="px-2">Asertivo {{ this.Personalidad4 }}% </h1>
-          <input type="range" v-model="Personalidad4" class="w-full py-2.5 px-5 rounded-lg bg-gray-100  focus:bg-white " id="Personalidad4" placeholder="" typeof="slider" min="0" max="100"/>
+          <slider @person="pers4">Personalidad 04</slider>
           <h1> Cauteloso {{100- this.Personalidad4 }}% </h1>
           
         </div>
@@ -309,7 +372,7 @@ export default {
   
     
     <div class="flex mb-6 lg:w-4/5 sm:w-full px-2 py-2">
-      <label class=" py-2 block text-black-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">  Objetivos: </label> 
+      <label  class=" py-2 block text-black-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">  Objetivos: </label> 
       <input id="objetivos" name="objetivos" v-model="Objetivos" class="bg-white  appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-black leading-tight focus:outline-none focus:bg-white focus:border-black " type="text" >
     </div>
 
@@ -335,9 +398,13 @@ export default {
 
     <div class=" py-2">
                     
-          <button  @click="Enviar()" class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
+          <Boton_Enviar :desactivar="false" @click="Enviar()" class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
             Enviar
-          </button>
+          </Boton_Enviar>
+
+          <Boton_Enviar :desactivar="true" @click="Enviar()" class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
+            Eliminar
+          </Boton_Enviar>
                     
     </div>
             </form>
