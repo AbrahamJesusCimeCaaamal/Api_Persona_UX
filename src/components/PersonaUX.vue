@@ -2,13 +2,15 @@
 import Boton_Enviar from '../components/Boton_Enviar.vue';
 import slider from '../components/InputSliders.vue';
 import inputtext from '../components/InputTexto.vue';
+import TextoTarea from '../components/TextoTarea.vue';
+
 import axios from 'axios';
 export default {
   components:{
 
-    Boton_Enviar,slider,inputtext
+    Boton_Enviar,slider,inputtext,TextoTarea
   },
-  emits: ['person','info'] , 
+  emits: ['person','info','dato'] , 
 
     data() {
         return {
@@ -42,6 +44,15 @@ export default {
 
     },
     methods: {
+
+      texto1(t){
+                this.Cita=t;
+
+            },
+      texto2(t){
+                this.CitaAutor=t;
+
+            },
       info1(a){
                 this.Nombre=a;
 
@@ -258,7 +269,10 @@ export default {
                 <div class="lg:flex w-full">
                     <div class="md:flex md:items-center mb-6 lg:w-6/12 sm:w-full ">
                     <label class=" block text-black font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name"> Cita:</label>
-                     <textarea v-model="Cita"  name="cita" id="cita" class=" text-secundario font-semibold font-contenido px-5 py-3 border-2 border-secundario w-full" rows="1"></textarea>
+                     
+                    <TextoTarea @dato= "texto1" > Cita</TextoTarea>
+                    
+                    
 
                     </div>
                     <div class="md:flex md:items-center mb-6  lg:w-6/12 sm:w-full ">
@@ -266,7 +280,7 @@ export default {
                     <label class="px-2  text-black font-bold w-32   sm:w-44 "> Cita autor: </label>
                     
                     <div class="w-11/12 ">
-                     <textarea v-model="CitaAutor" name="citaAutor" id="citaAutor" class="text-secundario font-semibold font-contenido px-5 py-3 border-2 border-secundario w-full"  rows="2"></textarea>    
+                     <TextoTarea @dato= "texto2" > CitaAutor</TextoTarea>
                     </div>
                 </div>
                 </div>
