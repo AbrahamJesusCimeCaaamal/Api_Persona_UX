@@ -3,14 +3,15 @@ import Boton_Enviar from '../components/Boton_Enviar.vue';
 import slider from '../components/InputSliders.vue';
 import inputtext from '../components/InputTexto.vue';
 import TextoTarea from '../components/TextoTarea.vue';
+import textoArea  from '../components/TextAreaAmplia.vue';
 
 import axios from 'axios';
 export default {
   components:{
 
-    Boton_Enviar,slider,inputtext,TextoTarea
+    Boton_Enviar,slider,inputtext,TextoTarea,textoArea
   },
-  emits: ['person','info','dato'] , 
+  emits: ['person','info','dato','datoTexto'] , 
 
     data() {
         return {
@@ -44,7 +45,10 @@ export default {
 
     },
     methods: {
+      textoAmplio(y){
+                this.Bio=y;
 
+            },
       texto1(t){
                 this.Cita=t;
 
@@ -292,8 +296,9 @@ export default {
                     <label class="block text-black font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name"> Bio: </label>
                     
                     <div class="w-full">
-                        <textarea name="Bio" id="Bio" class="text-secundario font-semibold font-contenido px-5 py-3 border-2 border-secundario w-full" v-model="Bio" rows="4"></textarea>
-                    </div>
+                          <textoArea @dato= "textoAmplio" > BIO</textoArea>
+                    
+                      </div>
                     
                 </div>
                 </div>
