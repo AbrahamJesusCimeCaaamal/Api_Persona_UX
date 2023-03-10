@@ -182,22 +182,45 @@ console.log(this.mostrar)
             </p>
             <p   class="text-base  text-black">{{ informacionDeUno.bio }}</p>
         
-        <div class=" bg-orange-200 w-full mt-4 mx-auto px-3" v-for="o,index in informacionDeUno.objetivos">
+<div >
+  <h1 class=" py-2 text-center text-2xl font-semibold">Objetivos</h1>
+  <div class=" bg-orange-200 w-full mt-4 mx-auto px-3" v-for="o,index in informacionDeUno.objetivos">
             <label class=" text-black font-bold md:text-left my-2 md:mb-0">
                 Objetivo {{ index +1 }}
                 <br>
             </label>
             <h4 class="mb-1 px-3"> {{ o.objetivo}}</h4>
           </div>
+</div>
+
         
-          <div class=" bg-blue-200 w-full mt-4 mx-auto px-3" v-for="f,index2 in informacionDeUno.frustraciones">
+        
+          <div>
+            <h1 class=" py-2 text-center text-2xl font-semibold">Frustraciones</h1>
+            <div class=" bg-blue-200 w-full mt-4 mx-auto px-3" v-for="f,index2 in informacionDeUno.frustraciones">
             <h1 class=" text-black font-bold md:text-left my-2 md:mb-0">frustración {{index2+1}} </h1>
             <h1 class="text-base  mb-1 px-3  text-black" >  {{ f.frustracion }}</h1> 
-          
-          
+          </div>
+          </div>
+
+          <div>
+            <h1 class=" py-2 text-center text-2xl font-semibold">Motivaciones</h1>
+            <div class=" bg-yellow-200 w-full mt-4 mx-auto px-3" v-for="f,index2 in informacionDeUno.motivaciones">
+            <h1 class=" text-black font-bold md:text-left my-2 md:mb-0">Motivación {{index2+1}} </h1>
+            <h1 class="text-base  mb-1 px-3  text-black" >  {{ f.motivacion }}  {{ f.porcentaje}}%</h1> 
+          </div>
+          </div>
+
+          <div>
+            <h1 class=" py-2 text-center text-2xl font-semibold">Motivaciones</h1>
+            <div class=" bg-rose-200 w-full mt-4 mx-auto px-3" v-for="f,index2 in informacionDeUno.marcas">
+            <h1 class=" text-black font-bold md:text-left my-2 md:mb-0">Motivación {{index2+1}} </h1>
+            <h1 class="text-base  mb-1 px-3  text-black" >  {{ f.marca }}</h1> 
+          </div>
           </div>
 
 
+         
        
 
 

@@ -38,9 +38,7 @@ export default {
             ValorFrustracion: "",
             Frustraciones: [{value:''}],
 
-            newMos: "",
-            newValor:"",
-            ArrayMotivaciones: [{value:'','porcentaje':''}],
+            Motivaciones: "",
             
             Marcas: "",
             
@@ -56,14 +54,6 @@ export default {
       
 
   //Motivaciones
-  Motivacionees(s, index, po,index2){
-    console.log(index)
-    console.log(s)
-    console.log(po)
-          this.ArrayMotivaciones[index,index2] = {value: s,'porcentaje': po }
-          console.log("------------------------------------------------------------------")
-          console.log(this.ArrayMotivaciones)
-        },
 
      objetivosValores(s, index){
       this.Objetivos[index] = {value: s}
@@ -141,7 +131,7 @@ export default {
                 personalidad04: this.Personalidad4,
                 objetivos: this.Objetivos,
                 frustraciones: this.Frustraciones,
-                motivaciones: this.ArrayMotivaciones,
+                motivaciones: this.Motivaciones,
                 marcas: this.Marcas
                 //completar las variables, estas deben llamarse como las que se recibirán en el backend sin el símbolo del dolar $
             })
@@ -449,17 +439,17 @@ export default {
       
     </div>
 
+    <div class="text-left items-center mb-6 sm:w-full  px-2 py-2 bg-orange-300">
+      <div class="flex mb-6 lg:w-4/5  sm:w-full  px-2 py-2">
+      <label class="py-4 block text-black font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">motivaciones: </label>  
+      <input v-model="Motivaciones" class="bg-while appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="text" >
+                     
+    </div>
+    </div>
+
  
 
 
-    <div class="flex mb-6 lg:w-4/5  sm:w-full px-2 py-2">
-      <div v-for="( index, index2) in ArrayMotivaciones">
-        <frust @informa="Motivacionees"  :index="index" :index2="index2" > </frust> 
-      </div>
-      <button class="bg-purple-300 text-lg px-2 py-1 border-2 border-blue-500 rounded-md " 
-       v-on:click.prevent="this.ArrayMotivaciones.push(newMos, newValor)">Nuevo </button> 
-      {{ this.ArrayMotivaciones }}
-    </div>
 
 
 
