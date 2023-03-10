@@ -32,9 +32,8 @@ export default {
             ValorObjetivos: "",
             Objetivos: [{value:''}],
 
-
-
-            Frustraciones:"",
+            ValorFrustracion: "",
+            Frustraciones: [{value:''}],
 
             Motivaciones:"",
 
@@ -52,6 +51,10 @@ export default {
       objetivosValores(s, index){
       this.Objetivos[index] = {value: s}
       console.log(this.Objetivos)
+    },
+    metodoFrustracion(s, index){
+      this.Frustraciones[index] = {value: s}
+      console.log(this.Frustraciones)
     },
       texto3(y){
                 this.Bio=y;
@@ -414,10 +417,13 @@ export default {
 
 
 
-    <div class="flex mb-6 lg:w-4/5  sm:w-full px-2 py-2">
-      <label class="block text-black font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">Frustraciones:</label>
-      <input id="frustaciones" name="frustraciones" v-model="Frustraciones" class="bg-whileappearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"  type="text" >
-                   
+    <div class="text-left mb-6 lg:w-2/5 sm:w-full px-2 py-2 bg-orange-300">
+      <label class="block text-black font-bold mb-1 md:mb-0 pr-4" for="inline-full-name">Frustraciones:</label>
+      <div v-for="(frus, index) in Frustraciones">
+        <inputArray @informa="metodoFrustracion"  :index="index"> </inputArray>  
+      </div>
+      <button class="bg-purple-300 text-lg px-2 py-1 border-2 border-blue-500 rounded-md "  v-on:click.prevent="this.Frustraciones.push(ValorFrustracion)">Nuevo </button> 
+  
     </div>
 
     <div class="flex mb-6 lg:w-4/5  sm:w-full px-2 py-2">
