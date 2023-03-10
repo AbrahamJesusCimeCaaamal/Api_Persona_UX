@@ -5,14 +5,17 @@ import inputtext from '../components/InputTexto.vue';
 import TextoTarea from '../components/TextoTarea.vue';
 import textoArea  from '../components/TextAreaAmplia.vue';
 import inputArray from '../components/inputArray.vue';
+import frust from '../components/InputFrus.vue'
 
 import axios from 'axios';
 export default {
   components:{
 
-    Boton,slider,inputtext,TextoTarea,textoArea,inputArray
+    Boton,slider,inputtext,TextoTarea,textoArea,inputArray,frust
   },
-  emits: ['person','info','dato','datoTexto','informa'] , 
+  emits: ['person','info','dato','datoTexto','informa','infor','infor2'] , 
+
+
 
     data() {
         return {
@@ -35,9 +38,12 @@ export default {
             ValorFrustracion: "",
             Frustraciones: [{value:''}],
 
-            Motivaciones:"",
-
+            newMos: "",
+            newValor:"",
+            ArrayMotivaciones: [{value:'','porcentaje':''}],
+            
             Marcas: "",
+            
             
             
         };
@@ -47,8 +53,19 @@ export default {
 
     },
     methods: {
+      
 
-      objetivosValores(s, index){
+  //Motivaciones
+  Motivacionees(s, index, po,index2){
+    console.log(index)
+    console.log(s)
+    console.log(po)
+          this.ArrayMotivaciones[index,index2] = {value: s,'porcentaje': po }
+          console.log("------------------------------------------------------------------")
+          console.log(this.ArrayMotivaciones)
+        },
+
+     objetivosValores(s, index){
       this.Objetivos[index] = {value: s}
       console.log(this.Objetivos)
     },
@@ -124,7 +141,7 @@ export default {
                 personalidad04: this.Personalidad4,
                 objetivos: this.Objetivos,
                 frustraciones: this.Frustraciones,
-                motivaciones: this.Motivaciones,
+                motivaciones: this.ArrayMotivaciones,
                 marcas: this.Marcas
                 //completar las variables, estas deben llamarse como las que se recibirán en el backend sin el símbolo del dolar $
             })
@@ -320,11 +337,11 @@ export default {
 <div class="  bg-rose-200 px-4 py-8">
  <h1 class=" text-3xl font-bold">Personalidad</h1>
   <div class="w-full mt-4">
-          <div class="px-8 text-lg bg-red-100  border-2 border-indigo-500/100  ">
+          <div class="md:px-8 px-2 text-lg bg-red-100  border-2 border-indigo-500/100  ">
             <label class="block text-black font-bold md:text-left my-2 md:mb-0">
             Personalidad 1.- Mente
           </label><br>
-          <div class="flex">
+          <div class=" sm:px-1 md:flex">
           <h1 class="px-2">Extrovertido  {{ this.Personalidad1 }}% </h1>
           
           <slider @person="pers1">Personalidad 01</slider>
@@ -340,12 +357,12 @@ export default {
 
 
   <div class="w-full mt-4">
-          <div class="px-8 text-lg bg-red-100  border-2 border-indigo-500/100  ">
+          <div class="md:px-8 px-2  text-lg bg-red-100  border-2 border-indigo-500/100  ">
             <label class="block text-black font-bold md:text-left my-2 md:mb-0">
             Personalidad 2.- Energía
           </label><br>
 
-          <div class="flex">
+          <div class="md:flex">
           <h1 class="px-2">Intuitivo  {{ this.Personalidad2 }}% </h1>
           <slider @person="pers2">Personalidad 02</slider>
             <h1> Observador {{100- this.Personalidad2 }}% </h1>
@@ -357,12 +374,12 @@ export default {
   </div>
 
   <div class="w-full mt-4">
-          <div class="px-8 text-lg bg-red-100  border-2 border-indigo-500/100  ">
+          <div class="md:px-8 px-2  text-lg bg-red-100  border-2 border-indigo-500/100  ">
             <label class="block text-black font-bold md:text-left my-2 md:mb-0">
             Personalidad 3.-Naturaleza
           </label><br>
 
-          <div class="flex">
+          <div class="md:flex">
           <h1 class="px-2">Pensamiento  {{ this.Personalidad3 }}% </h1>
           <slider @person="pers3">Personalidad 03</slider> 
          <h1> Emocional {{100- this.Personalidad3 }}% </h1>
@@ -375,12 +392,12 @@ export default {
   </div>
 
   <div class="w-full mt-4">
-          <div class="px-8 text-lg bg-red-100  border-2 border-indigo-500/100  ">
+          <div class="md:px-8 px-2  text-lg bg-red-100  border-2 border-indigo-500/100  ">
             <label class="block text-black font-bold md:text-left my-2 md:mb-0">
             Personalidad 4.- Identidad
           </label><br>
 
-          <div class="flex">
+          <div class="md:flex">
           <h1 class="px-2">Asertivo {{ this.Personalidad4 }}% </h1>
           <slider @person="pers4">Personalidad 04</slider>
           <h1> Cauteloso {{100- this.Personalidad4 }}% </h1>
@@ -397,18 +414,21 @@ export default {
 
 </div><br>
 
-   <div class="bg-green-200 sm:px-4 lg:px-32 py-4" >
+   <div class="bg-green-200 sm:px-4 lg:px-60 md:px-40  py-4" >
     <h1 class="text-3xl font-bold">Complementos</h1><br>
   
     
-    <div class="text-left mb-6 lg:w-2/5 sm:w-full px-2 py-2 bg-orange-300">
+    <div class="text-left items-center mb-6 sm:w-full  px-2 py-2 bg-orange-300">
       <label  class=" py-2 block text-black-500 font-bold mb-2 md:mb-0 pr-4" for="inline-full-name">  Objetivos: </label> 
-      <div class="px-3 py-1" v-for="(obj, index) in Objetivos">
+      <div class="px-3 py-1 " v-for="(obj, index) in Objetivos">
       <inputArray @informa="objetivosValores"  :index="index"> </inputArray>
       </div>
-      
-         <button class="bg-purple-300 text-lg px-2 py-1 border-2 border-blue-500 rounded-md " v-on:click.prevent="this.Objetivos.push(ValorObjetivos)">Nuevo </button> 
+        <div class="xl:px-28 sm:px-2 md:px-4 lg:px-16  2xl:96      ">
+          
+          <button class="bg-purple-300 text-lg px-2 py-1 border-2 border-blue-500 rounded-md " v-on:click.prevent="this.Objetivos.push(ValorObjetivos)">Nuevo </button> 
     
+        </div>
+         
        
     </div>
 
@@ -417,26 +437,41 @@ export default {
 
 
 
-    <div class="text-left mb-6 lg:w-2/5 sm:w-full px-2 py-2 bg-orange-300">
-      <label class="block text-black font-bold mb-1 md:mb-0 pr-4" for="inline-full-name">Frustraciones:</label>
-      <div v-for="(frus, index) in Frustraciones">
+    <div class="text-left mb-6  sm:w-full px-2 py-2 bg-orange-300">
+      <label class="py-2 block text-black font-bold mb-1 md:mb-0 pr-4" for="inline-full-name">Frustraciones:</label>
+      <div class="px-3 py-2 " v-for="(frus, index) in Frustraciones">
         <inputArray @informa="metodoFrustracion"  :index="index"> </inputArray>  
       </div>
-      <button class="bg-purple-300 text-lg px-2 py-1 border-2 border-blue-500 rounded-md "  v-on:click.prevent="this.Frustraciones.push(ValorFrustracion)">Nuevo </button> 
+      <div class='xl:px-28 sm:px-2 md:md:px-4  lg:px-16  2xl:96  '>
+        <button class="  bg-purple-300 text-lg px-2 py-1 border-2 border-blue-500 rounded-md "  v-on:click.prevent="this.Frustraciones.push(ValorFrustracion)">Nuevo </button> 
   
+      </div>
+      
     </div>
+
+ 
+
 
     <div class="flex mb-6 lg:w-4/5  sm:w-full px-2 py-2">
-      <label class="block text-black  font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">Motivaciones:</label>       
-      <input id="motivaciones"  name="motivaciones" v-model="Motivaciones" class="bg-while appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500"  type="text" >
-              
+      <div v-for="( index, index2) in ArrayMotivaciones">
+        <frust @informa="Motivacionees"  :index="index" :index2="index2" > </frust> 
+      </div>
+      <button class="bg-purple-300 text-lg px-2 py-1 border-2 border-blue-500 rounded-md " 
+       v-on:click.prevent="this.ArrayMotivaciones.push(newMos, newValor)">Nuevo </button> 
+      {{ this.ArrayMotivaciones }}
     </div>
 
-    <div class="flex mb-6 lg:w-4/5  sm:w-full  px-2 py-2">
-      <label class="block text-black font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">Marcas: </label>  
+
+
+
+    <div class="text-left items-center mb-6 sm:w-full  px-2 py-2 bg-orange-300">
+      <div class="flex mb-6 lg:w-4/5  sm:w-full  px-2 py-2">
+      <label class="py-4 block text-black font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">Marcas: </label>  
       <input v-model="Marcas" class="bg-while appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="text" >
                      
     </div>
+    </div>
+    
 
    </div>             
 

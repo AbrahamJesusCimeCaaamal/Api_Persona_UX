@@ -9,7 +9,7 @@ export default {
     props:{index:null},
     methods: {
         enviar() {
-            dato: this.info,
+            
             this.$emit('informa',this.dato, this.index)
         }
     }

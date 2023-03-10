@@ -200,13 +200,16 @@ console.log(this.mostrar)
         <div>
             <p class="text-xs text-gray-500">Bio:
             </p>
-            <p class="text-sm font-medium text-gray-600">{{ informacionDeUno.bio }}</p>
+            <p   class="text-sm font-medium text-gray-600">{{ informacionDeUno.bio }}</p>
         </div>
         <div>
-            <p class="text-xs text-gray-500">frustraciones:
+            <p class="text-xs text-gray-500">Objetivos:
             </p>
-            <p class="text-sm font-medium text-gray-600">{{ informacionDeUno.frustaciones}}</p>
+            <p  class="text-sm font-medium text-gray-600">{{ informacionDeUno.objetivos[0].objetivo}}</p>
+            <p  class="text-sm font-medium text-gray-600">{{ informacionDeUno.objetivos[1].objetivo}}</p>
+            <p  class="text-sm font-medium text-gray-600">{{ informacionDeUno.objetivos[2].objetivo}}</p>
         </div>
+       
 
 
 </div>
