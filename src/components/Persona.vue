@@ -150,65 +150,54 @@ console.log(this.mostrar)
 
 <div class="personaje w-full sm:px-2 lg:px-8  border-2 border-black bg-lime-100 rounded-sm">
 
-
+  <p class=" text-center mt-1 text-2xl font-bold text-black">Persona UX</p>
         
-                <h3 class="text-lg font-bold text-gray-900 sm:text-xl">
-                    <strong> Nombre: </strong>{{ informacionDeUno.nombre }}
+                <h3 class="text-lg text-black py-2 ">
+                    <strong> Nombre: </strong> {{ informacionDeUno.nombre }}
                 </h3>
 
-                <p class="mt-1 text-xs font-medium text-gray-600">Persona UX</p>
-           
-
-
-       
-
+            
+                <h3 class="text-base text-black py-2 ">
+                    <strong> Edad: </strong> {{ informacionDeUno.edad  }}
+                </h3>
+              
+                <h3 class="text-base text-black py-2 ">
+                    <strong> Estad Civil: </strong> {{ informacionDeUno.estadoCivil   }}
+                </h3>
+                <h3 class="text-base text-black py-2 ">
+                    <strong> Trabajo: </strong> {{ informacionDeUno.trabajo  }}
+                </h3>
+                <h3 class="text-base text-black py-2 ">
+                    <strong> Recidencia: </strong> {{ informacionDeUno.residencia  }}
+                </h3>
+                <h3 class="text-base text-black py-2 ">
+                    <strong> Cita: </strong> {{ informacionDeUno.cita  }}
+                </h3>
+                <h3 class="text-base text-black py-2 ">
+                    <strong> Autor de la Cita: </strong> {{ informacionDeUno.citaAutor  }}
+                </h3>
         
-
         
-            <div class="flex flex-col-reverse">
-                <dt class="text-sm font-medium text-gray-600"> {{ informacionDeUno.edad }}</dt>
-                <dd class="text-xs text-gray-500">Edad</dd>
-            </div>
-
-            <div class="flex flex-col-reverse">
-                <dt class="text-sm font-medium text-gray-600"> {{ informacionDeUno.estadoCivil }}</dt>
-                <dd class="text-xs text-gray-500">Estado Civil</dd>
-            </div>
-
-
-            <div class="flex flex-col-reverse">
-                <dt class="text-sm font-medium text-gray-600"> {{ informacionDeUno.trabajo }}</dt>
-                <dd class="text-xs text-gray-500">Trabajo</dd>
-            </div>
-
-            <div class="flex flex-col-reverse">
-                <dt class="text-sm font-medium text-gray-600"> {{ informacionDeUno.residencia }}</dt>
-                <dd class="text-xs text-gray-500">Residencia</dd>
-            </div>
-
-            <div class="flex flex-col-reverse">
-                <dt class="text-sm font-medium text-gray-600"> {{ informacionDeUno.cita }}</dt>
-                <dd class="text-xs text-gray-500">Cita</dd>
-            </div>
-
-            <div class="flex flex-col-reverse">
-                <dt class="text-sm font-medium text-gray-600"> {{ informacionDeUno.citaAutor }}</dt>
-                <dd class="text-xs text-gray-500">Autor de la Cita</dd>
-            </div>
-
-        
-        <div>
-            <p class="text-xs text-gray-500">Bio:
+            <p class="text-base font-bold text-black">Bio:
             </p>
-            <p   class="text-sm font-medium text-gray-600">{{ informacionDeUno.bio }}</p>
-        </div>
-        <div>
-            <p class="text-xs text-gray-500">Objetivos:
-            </p>
-            <p  class="text-sm font-medium text-gray-600">{{ informacionDeUno.objetivos[0].objetivo}}</p>
-            <p  class="text-sm font-medium text-gray-600">{{ informacionDeUno.objetivos[1].objetivo}}</p>
-            <p  class="text-sm font-medium text-gray-600">{{ informacionDeUno.objetivos[2].objetivo}}</p>
-        </div>
+            <p   class="text-base  text-black">{{ informacionDeUno.bio }}</p>
+        
+        <div class=" bg-orange-200 w-full mt-4 mx-auto px-3" v-for="o,index in informacionDeUno.objetivos">
+            <label class=" text-black font-bold md:text-left my-2 md:mb-0">
+                Objetivo {{ index +1 }}
+                <br>
+            </label>
+            <h4 class="mb-1 px-3"> {{ o.objetivo}}</h4>
+          </div>
+        
+          <div class=" bg-blue-200 w-full mt-4 mx-auto px-3" v-for="f,index2 in informacionDeUno.frustraciones">
+            <h1 class=" text-black font-bold md:text-left my-2 md:mb-0">frustración {{index2+1}} </h1>
+            <h1 class="text-base  mb-1 px-3  text-black" >  {{ f.frustracion }}</h1> 
+          
+          
+          </div>
+
+
        
 
 
