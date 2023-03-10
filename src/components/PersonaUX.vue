@@ -1,17 +1,18 @@
 <script>
-import Boton_Enviar from '../components/Boton_Enviar.vue';
+import Boton from '../components/Boton_Enviar.vue';
 import slider from '../components/InputSliders.vue';
 import inputtext from '../components/InputTexto.vue';
 import TextoTarea from '../components/TextoTarea.vue';
 import textoArea  from '../components/TextAreaAmplia.vue';
+import inputArray from '../components/inputArray.vue';
 
 import axios from 'axios';
 export default {
   components:{
 
-    Boton_Enviar,slider,inputtext,TextoTarea,textoArea
+    Boton,slider,inputtext,TextoTarea,textoArea,inputArray
   },
-  emits: ['person','info','dato','datoTexto'] , 
+  emits: ['person','info','dato','datoTexto','informa'] , 
 
     data() {
         return {
@@ -28,12 +29,14 @@ export default {
             Personalidad3: "50",
             Personalidad4: "50",
 
-            Objetivos:[ {value: ''} ],
+            ValorObjetivos: "",
+            Objetivos: [{value:''}],
 
 
-            Frustraciones:[{value: 'obj20'}],
 
-            Motivaciones:[{value: 'motivacion','porcentaje':'80'}],
+            Frustraciones:"",
+
+            Motivaciones:"",
 
             Marcas: "",
             
@@ -45,7 +48,12 @@ export default {
 
     },
     methods: {
-      textoAmplio(y){
+
+      objetivosValores(s, index){
+      this.Objetivos[index] = {value: s}
+      console.log(this.Objetivos)
+    },
+      texto3(y){
                 this.Bio=y;
 
             },
@@ -111,7 +119,7 @@ export default {
                 personalidad02: this.Personalidad2,
                 personalidad03: this.Personalidad3,
                 personalidad04: this.Personalidad4,
-                objetivos: this.Objetivos ,
+                objetivos: this.Objetivos,
                 frustraciones: this.Frustraciones,
                 motivaciones: this.Motivaciones,
                 marcas: this.Marcas
@@ -176,7 +184,7 @@ export default {
             }
 
             //Bio
-            if (this.Bio.length < 701 && this.Bio != "" && !isNaN (this.CitaAutor) === false){
+            if (this.Bio.length < 701 && this.Bio != "" ){
               console.log("Bio correcta")
             }else{
               console.log("Bio incorrecta")
@@ -296,7 +304,7 @@ export default {
                     <label class="block text-black font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name"> Bio: </label>
                     
                     <div class="w-full">
-                          <textoArea @dato= "textoAmplio" > BIO</textoArea>
+                      <TextoTarea @dato= "texto3" > CitaAutor</TextoTarea>
                     
                       </div>
                     
@@ -387,13 +395,24 @@ export default {
 </div><br>
 
    <div class="bg-green-200 sm:px-4 lg:px-32 py-4" >
-    <h1 class="text-3xl font-bold">Complementos</h1>
+    <h1 class="text-3xl font-bold">Complementos</h1><br>
   
     
-    <div class="flex mb-6 lg:w-4/5 sm:w-full px-2 py-2">
-      <label  class=" py-2 block text-black-500 font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">  Objetivos: </label> 
-      <input id="objetivos" name="objetivos" v-model="Objetivos" class="bg-white  appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-black leading-tight focus:outline-none focus:bg-white focus:border-black " type="text" >
+    <div class="text-left mb-6 lg:w-2/5 sm:w-full px-2 py-2 bg-orange-300">
+      <label  class=" py-2 block text-black-500 font-bold mb-2 md:mb-0 pr-4" for="inline-full-name">  Objetivos: </label> 
+      <div class="px-3 py-1" v-for="(obj, index) in Objetivos">
+      <inputArray @informa="objetivosValores"  :index="index"> </inputArray>
+      </div>
+      
+         <button class="bg-purple-300 text-lg px-2 py-1 border-2 border-blue-500 rounded-md " v-on:click.prevent="this.Objetivos.push(ValorObjetivos)">Nuevo </button> 
+    
+       
     </div>
+
+
+
+
+
 
     <div class="flex mb-6 lg:w-4/5  sm:w-full px-2 py-2">
       <label class="block text-black font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">Frustraciones:</label>
@@ -417,13 +436,10 @@ export default {
 
     <div class=" py-2">
                     
-          <Boton_Enviar :desactivar="false" @click="Enviar()" class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
+          <Boton @click="Enviar()" class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
             Enviar
-          </Boton_Enviar>
+          </Boton>
 
-          <Boton_Enviar :desactivar="true" @click="Enviar()" class="shadow bg-purple-500 hover:bg-purple-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
-            Eliminar
-          </Boton_Enviar>
                     
     </div>
             </form>

@@ -18,7 +18,7 @@ import { RouterLink, RouterView } from 'vue-router'
       
         <RouterLink class="text-xl  bg-green-400 hover:bg-green-500 hover:text-2xl" to="/"> <strong>INICIO</strong> </RouterLink>
         <RouterLink class=" text-xl   bg-blue-400 hover:bg-blue-500 hover:text-2xl"  to="/personaUX"> <strong>Formulario </strong> </RouterLink>
-        <RouterLink class=" text-xl   bg-red-400 hover:bg-red-500  hover:text-2xl"  to="/about"> <strong> Acerca de </strong> </RouterLink>
+        <RouterLink class=" text-xl   bg-red-400 hover:bg-red-500  hover:text-2xl"  to="/personas"> <strong> Ver persona</strong> </RouterLink>
 
       </nav>
 
