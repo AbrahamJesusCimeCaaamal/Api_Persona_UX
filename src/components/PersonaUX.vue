@@ -6,14 +6,15 @@ import TextoTarea from '../components/TextoTarea.vue';
 import textoArea  from '../components/TextAreaAmplia.vue';
 import inputArray from '../components/inputArray.vue';
 import frust from '../components/InputFrus.vue'
+import slider1 from '../components/sliderM.vue';
 
 import axios from 'axios';
 export default {
   components:{
 
-    Boton,slider,inputtext,TextoTarea,textoArea,inputArray,frust
+    Boton,slider,inputtext,TextoTarea,textoArea,inputArray,frust,slider1
   },
-  emits: ['person','info','dato','datoTexto','informa','infor','infor2'] , 
+  emits: ['person','info','dato','datoTexto','informa','infor','infor2','slid'] , 
 
 
 
@@ -38,7 +39,9 @@ export default {
             ValorFrustracion: "",
             Frustraciones: [{value:''}],
 
-            Motivaciones: "",
+            valores: "",
+            Motivaciones: [{ value: '', porcentaje: '' }],
+
             
             Marcas: "",
             
@@ -54,6 +57,14 @@ export default {
       
 
   //Motivaciones
+  MotivacionesText(s, index) {
+      this.Motivaciones[index] = { value: s , porcentaje: this.Motivaciones[index].value }
+      
+    },
+    MotivacionesVal(s, index) {
+      this.Motivaciones[index] = { value: this.Motivaciones[index].value , porcentaje: s }
+      
+    },
 
      objetivosValores(s, index){
       this.Objetivos[index] = {value: s}
@@ -438,14 +449,25 @@ export default {
       </div>
       
     </div>
+    <div class="w-full px-3 block">
+            <labelView>Motivaciones:</labelView>
+            <div v-for="(mot, index) in Motivaciones"  class="flex">
+              <!-- Trabajo -->
+              <div class="w-full px-3 flex-root">
 
-    <div class="text-left items-center mb-6 sm:w-full  px-2 py-2 bg-orange-300">
-      <div class="flex mb-6 lg:w-4/5  sm:w-full  px-2 py-2">
-      <label class="py-4 block text-black font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">motivaciones: </label>  
-      <input v-model="Motivaciones" class="bg-while appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="text" >
-                     
-    </div>
-    </div>
+                <inputtext @info="MotivacionesText" :index="index"> </inputtext>
+              </div>
+              <div class="w-full px-3 flex-root">
+
+                <slider1  @slid="MotivacionesVal" :index="index"> </slider1>
+              </div>
+            </div>
+            <btnNuevo v-on:click.prevent="this.ArrayMotivaciones.push(valores)">Agregar Nuevo</btnNuevo>
+
+          </div>
+
+
+    
 
  
 
