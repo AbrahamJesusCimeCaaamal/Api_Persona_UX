@@ -1,29 +1,32 @@
 <script>
 export default {
-
+    
     data() {
         return {
-            slider1: 50
+            dato1: "",
+            dato2:"",
         }
     },
     props:{index:null},
     methods: {
         enviar() {
-            this.$emit('slid', this.slider1, this.index)
+            dato1: this.info1
+            dato2: this.info2
+            this.$emit('informacion',this.dato1,this.dato2,this.index)
         }
     }
 }
 </script>
 
 <template>
-    <div class="flex">
-        <div class="w-full px-3">
-            <slot></slot> ({{ slider1 }}%)
-            <br>
-            <input
-                class="block w-full bg-white text-gray-700 border border-gray-200 rounded py-2 mx-auto mb-3 leading-tight focus:outline-none focus:bg-white focus:border-gray-500 hover:tracking-wide"
-                type="range" min="0" max="100" v-model="slider1" @change="enviar">
-        </div>
+    <div>
+        <slot></slot>
+        <input type="text" v-model="dato1" name="info1" id="info1" @input="enviar"
+        class="px-2 py-1 rounded-lg mb-3 ml-2 mr-2">
 
+        <input type="range" v-model="dato2" name="info2" id="info2" @input="enviar"
+            class="px-2 py-1 rounded-lg mb-3 ml-2 mr-2">
+
+            {{dato2}}%
     </div>
 </template>

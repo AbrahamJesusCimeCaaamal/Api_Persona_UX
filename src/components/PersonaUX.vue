@@ -14,7 +14,7 @@ export default {
 
     Boton,slider,inputtext,TextoTarea,textoArea,inputArray,frust,slider1
   },
-  emits: ['person','info','dato','datoTexto','informa','infor','infor2','slid'] , 
+  emits: ['person','info','dato','datoTexto','informa','infor','infor2','informacion'] , 
 
 
 
@@ -40,7 +40,7 @@ export default {
             Frustraciones: [{value:''}],
 
             valores: "",
-            Motivaciones: [{ value: '', porcentaje: '' }],
+            Motivaciones: [{ value: '', 'porcentaje': '' }],
 
             
             Marcas: "",
@@ -55,14 +55,9 @@ export default {
     },
     methods: {
       
-
-  //Motivaciones
-  MotivacionesText(s, index) {
-      this.Motivaciones[index] = { value: s , porcentaje: this.Motivaciones[index].value }
-      
-    },
-    MotivacionesVal(s, index) {
-      this.Motivaciones[index] = { value: this.Motivaciones[index].value , porcentaje: s }
+    MotivacionesVal(s,m, index) {
+      this.Motivaciones[index] = {value: s,porcentaje: m}
+      console.log(this.Motivaciones)
       
     },
 
@@ -451,29 +446,13 @@ export default {
     </div>
     <div class="w-full px-3 block">
             <labelView>Motivaciones:</labelView>
-            <div v-for="(mot, index) in Motivaciones"  class="flex">
-              <!-- Trabajo -->
-              <div class="w-full px-3 flex-root">
-
-                <inputtext @info="MotivacionesText" :index="index"> </inputtext>
-              </div>
-              <div class="w-full px-3 flex-root">
-
-                <slider1  @slid="MotivacionesVal" :index="index"> </slider1>
-              </div>
-            </div>
-            <btnNuevo v-on:click.prevent="this.ArrayMotivaciones.push(valores)">Agregar Nuevo</btnNuevo>
-
+            <div v-for="(obj, index) in Motivaciones">
+                  <slider1 @informacion=" MotivacionesVal" :index="index"> </slider1>
+                
+                </div>
+                <button v-on:click.prevent="this.Motivaciones.push(valores)" class="px-4 py-2 mb-2 bg-gray-600 text-white rounded"> Agregar</button>
+              
           </div>
-
-
-    
-
- 
-
-
-
-
 
 
     <div class="text-left items-center mb-6 sm:w-full  px-2 py-2 bg-orange-300">
