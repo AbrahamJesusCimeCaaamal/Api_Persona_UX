@@ -1,5 +1,18 @@
+<script setup>
+import perfil from "../components/perfilUX.vue";
+
+</script>
 <template>
-    <div>
-        <h1>holamundo</h1>
-    </div>
+
+
+
+
+  <div >
+
+  <perfil/>
+
+  </div>
+
+
+
 </template>

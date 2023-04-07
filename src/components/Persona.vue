@@ -220,9 +220,9 @@ enviarDato() {
           </div>
 
           <div>
-            <h1 class=" py-2 text-center text-2xl font-semibold">Motivaciones</h1>
+            <h1 class=" py-2 text-center text-2xl font-semibold">Marcas</h1>
             <div class=" bg-rose-200 w-full mt-4 mx-auto px-3" v-for="f,index2 in informacionDeUno.marcas">
-            <h1 class=" text-black font-bold md:text-left my-2 md:mb-0">Motivación {{index2+1}} </h1>
+            <h1 class=" text-black font-bold md:text-left my-2 md:mb-0">Marca {{index2+1}} </h1>
             <h1 class="text-base  mb-1 px-3  text-black" >  {{ f.marca }}</h1> 
           </div>
           </div>
