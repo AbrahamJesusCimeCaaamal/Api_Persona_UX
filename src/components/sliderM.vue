@@ -4,7 +4,7 @@ export default {
     data() {
         return {
             dato1: "",
-            dato2:"",
+            dato2:50,
         }
     },
     props:{index:null},
@@ -21,12 +21,9 @@ export default {
 <template>
     <div>
         <slot></slot>
-        <input type="text" v-model="dato1" name="info1" id="info1" @input="enviar"
-        class="px-2 py-1 rounded-lg mb-3 ml-2 mr-2">
 
         <input type="range" v-model="dato2" name="info2" id="info2" @input="enviar"
-            class="px-2 py-1 rounded-lg mb-3 ml-2 mr-2">
+            class=" px-2 py-1 rounded-lg mb-3 ml-2 mr-2 w-10/12"  placeholder="" typeof="slider" min="0" max="100"  >{{dato2}}%
 
-            {{dato2}}%
     </div>
 </template>

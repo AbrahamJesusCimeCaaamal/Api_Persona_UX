@@ -1,9 +1,14 @@
 <script>
 import axios from 'axios'
+import Boton from '../components/Boton_Enviar.vue';
 
 let API_URL = '/api/getPersonasUxd.php'
 
 export default {
+  components:{
+
+Boton,
+},
 
   data() {
     return {
@@ -63,6 +68,9 @@ axios.get(API_URL)
 this.mostrar = true
 console.log(this.mostrar)
 },
+enviarDato() {
+      this.$emit(this.search);
+    },
 
 
     buscar(search)  { 
@@ -99,19 +107,19 @@ console.log(this.mostrar)
   <div class="flex justify-align-center mx-auto  my-5 ">
       
       <h3 class="text-2xl text-center  mx-5 sm:py-2"> <strong>Buscar  </strong></h3>
-      <input class=" border-2 border-blue-200 rounded-full py-2 px-4" v-model="busqueda"  @input = "buscar(busqueda)"  type="text"  placeholder= "Buscar por nombre o id">
+      <input class=" border-2 border-blue-200 rounded-full py-2 px-4" v-model="busqueda"  @input = "buscar(busqueda)"  type="text"  placeholder= "Buscar id">
       
 
     </div>
 
     <div v-if="mosbusqueda">
       <div v-if="resultaID " class="flex mx-auto justify-center items-center space-x-4 text-base my-2"  >  
-    <div class="w-3/4 mx-auto my-auto p-3 border-4 border-black bg-white rounded-sm">
+    <div class="w-3/6 mx-auto my-auto p-3 border-4 border-black bg-white rounded-sm">
       
       <div class="info-buscados text-xl">
         <h2> <strong>Id:</strong>  {{ resulta.id }}</h2>
         <h2> <strong>  Nombre:</strong> {{ resulta.nombre}}</h2>
-        
+    
       </div>
     </div>      
   </div>

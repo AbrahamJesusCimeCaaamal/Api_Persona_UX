@@ -7,12 +7,16 @@ import textoArea  from '../components/TextAreaAmplia.vue';
 import inputArray from '../components/inputArray.vue';
 import frust from '../components/InputFrus.vue'
 import slider1 from '../components/sliderM.vue';
+import slider2 from '../components/sliderM.vue';
+import slider3 from '../components/sliderM.vue';
+import slider4 from '../components/sliderM.vue';
+import slider5 from '../components/sliderM.vue';
 
 import axios from 'axios';
 export default {
   components:{
 
-    Boton,slider,inputtext,TextoTarea,textoArea,inputArray,frust,slider1
+    Boton,slider,inputtext,TextoTarea,textoArea,inputArray,frust,slider1,slider2,slider3,slider4,slider5,
   },
   emits: ['person','info','dato','datoTexto','informa','infor','infor2','informacion'] , 
 
@@ -39,10 +43,10 @@ export default {
             ValorFrustracion: "",
             Frustraciones: [{value:''}],
 
-            valores: "",
+            valores: [{},{},{},{}],
             Motivaciones: [{ value: '', 'porcentaje': '' }],
 
-            
+
             Marcas: "",
             
             
@@ -55,11 +59,35 @@ export default {
     },
     methods: {
       
-    MotivacionesVal(s,m, index) {
-      this.Motivaciones[index] = {value: s,porcentaje: m}
+    MotivacionesVal(s,m) {
+      this.valores[0]= {value: "incentive",porcentaje: m}
+      console.log(this.valores)
+      
+    },
+    MotivacionesVal2(s,m) {
+      this.valores[1]= {value: "fear",porcentaje: m}
       console.log(this.Motivaciones)
       
     },
+    MotivacionesVal3(s,m) {
+      this.valores[2]= {value: "social",porcentaje: m}
+      console.log(this.valores)
+      
+    },
+    MotivacionesVal4(s,m) {
+      this.valores[3]= {value: "achievement",porcentaje: m}
+      console.log(this.valores)
+      
+    },
+    MotivacionesVal5(s,m) {
+      this.valores[4]= {value: "growth",porcentaje: m}
+      this.Motivaciones=this.valores
+      console.log(this.valores)
+      console.log("---------------------------")
+      console.log(this.Motivaciones)
+      
+    },
+
 
      objetivosValores(s, index){
       this.Objetivos[index] = {value: s}
@@ -360,7 +388,7 @@ export default {
 
           <div class="md:flex">
           <h1 class="px-2">Intuitivo  {{ this.Personalidad2 }}% </h1>
-          <slider @person="pers2">Personalidad 02</slider>
+          <slider class="accent-yellow-700" @person="pers2">Personalidad 02</slider>
             <h1> Observador {{100- this.Personalidad2 }}% </h1>
           
         </div>
@@ -377,7 +405,7 @@ export default {
 
           <div class="md:flex">
           <h1 class="px-2">Pensamiento  {{ this.Personalidad3 }}% </h1>
-          <slider @person="pers3">Personalidad 03</slider> 
+          <slider class="accent-lime-700"  @person="pers3">Personalidad 03</slider> 
          <h1> Emocional {{100- this.Personalidad3 }}% </h1>
           
         </div>
@@ -395,7 +423,7 @@ export default {
 
           <div class="md:flex">
           <h1 class="px-2">Asertivo {{ this.Personalidad4 }}% </h1>
-          <slider @person="pers4">Personalidad 04</slider>
+          <slider class="accent-red-500"  @person="pers4">Personalidad 04</slider>
           <h1> Cauteloso {{100- this.Personalidad4 }}% </h1>
           
         </div>
@@ -415,7 +443,7 @@ export default {
   
     
     <div class="text-left items-center mb-6 sm:w-full  px-2 py-2 bg-orange-300">
-      <label  class=" py-2 block text-black-500 font-bold mb-2 md:mb-0 pr-4" for="inline-full-name">  Objetivos: </label> 
+      <label  class="text-xl py-2 block text-black-500 font-bold mb-2 md:mb-0 pr-4" for="inline-full-name">  Objetivos: </label> 
       <div class="px-3 py-1 " v-for="(obj, index) in Objetivos">
       <inputArray @informa="objetivosValores"  :index="index"> </inputArray>
       </div>
@@ -434,7 +462,7 @@ export default {
 
 
     <div class="text-left mb-6  sm:w-full px-2 py-2 bg-orange-300">
-      <label class="py-2 block text-black font-bold mb-1 md:mb-0 pr-4" for="inline-full-name">Frustraciones:</label>
+      <label class=" text-xl py-2 block text-black font-bold mb-1 md:mb-0 pr-4" for="inline-full-name">Frustraciones:</label>
       <div class="px-3 py-2 " v-for="(frus, index) in Frustraciones">
         <inputArray @informa="metodoFrustracion"  :index="index"> </inputArray>  
       </div>
@@ -444,20 +472,34 @@ export default {
       </div>
       
     </div>
-    <div class="w-full px-3 block">
-            <labelView>Motivaciones:</labelView>
-            <div v-for="(obj, index) in Motivaciones">
-                  <slider1 @informacion=" MotivacionesVal" :index="index"> </slider1>
-                
+    
+    <div class="w-full ">
+            
+           
+             
+              <div class="text-left md:px-8 px-2  text-lg bg-orange-300  border-2">
+                <labelView class="text-xl  font-bold ">Motivaciones:</labelView><br>
+                <div class="text-center">
+                  <labelView class="text-xl  font-bold ">Incentive</labelView><br>
+                  <slider1 class="accent-purple-500" @informacion=" MotivacionesVal" :index="index"></slider1>
+                  <labelView class="text-xl  font-bold ">Fear</labelView><br>
+                  <slider2 class="accent-lime-700" @informacion=" MotivacionesVal2" :index="index"></slider2>
+                  <labelView class="text-xl  font-bold ">Social</labelView><br>
+                  <slider3 class="accent-blue-500"  @informacion=" MotivacionesVal3" :index="index"></slider3>
+                  <labelView class="text-xl  font-bold ">Achievemen</labelView><br>
+                  <slider4 class="accent-green-700" @informacion=" MotivacionesVal4" :index="index"></slider4>
+                  <labelView class="text-xl  font-bold ">Growth</labelView><br>
+
+                  <slider5 class="accent-pink-500" @informacion=" MotivacionesVal5" :index="index"></slider5>
                 </div>
-                <button v-on:click.prevent="this.Motivaciones.push(valores)" class="px-4 py-2 mb-2 bg-gray-600 text-white rounded"> Agregar</button>
-              
-          </div>
+                </div>
+            
+          </div><br>
 
 
     <div class="text-left items-center mb-6 sm:w-full  px-2 py-2 bg-orange-300">
       <div class="flex mb-6 lg:w-4/5  sm:w-full  px-2 py-2">
-      <label class="py-4 block text-black font-bold md:text-right mb-1 md:mb-0 pr-4" for="inline-full-name">Marcas: </label>  
+      <label class="py-4 block text-black font-bold md:text-right mb-1 md:mb-0 pr-4 text-xl" for="inline-full-name">Marcas: </label>  
       <input v-model="Marcas" class="bg-while appearance-none border-2 border-gray-200 rounded w-full py-2 px-4 text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-purple-500" id="inline-full-name" type="text" >
                      
     </div>
